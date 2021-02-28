@@ -1,6 +1,7 @@
 require("@nomiclabs/hardhat-waffle");
 require("hardhat-deploy");
 require("@nomiclabs/hardhat-solhint");
+const walletUtils = require("./walletUtils");
 
 
 // This is a sample Hardhat task. To learn how to create your own go to
@@ -18,23 +19,32 @@ task("accounts", "Prints the list of accounts", async () => {
 
 /**
  * @type import('hardhat/config').HardhatUserConfig
+ * version: "0.5.15",
+    settings: {
+      optimizer: {
+        enabled: true,
+        runs: 200
+      }
+    }
  */
 module.exports = {
   solidity: {
     compilers: [
       {
-        version: "0.6.9",
-        settings:{
-          optimizer: { enabled: true, runs: 200 }
-        }
+        version: "0.6.2"
       },
       {
-        version: "0.7.2",
-        settings:{
-          optimizer: { enabled: true, runs: 200 }
-        }
+        version: "0.7.3"
       }
     ]
-  }
+    },
+  networks:{
+  xdai:{
+    url: `https://rpc.xdaichain.com/`,
+    accounts:walletUtils.makeKeyList()
+    //gas : "auto",
+    //gasPrice : "1000000000"
+  }}
 };
+
 
