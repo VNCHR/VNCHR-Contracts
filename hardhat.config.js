@@ -39,12 +39,17 @@ module.exports = {
     ]
     },
   networks:{
-  xdai:{
-    url: `https://rpc.xdaichain.com/`,
-    accounts:walletUtils.makeKeyList()
+    hardhat:{
+      //forking:{url:`https://rpc.xdaichain.com/`},
+      accounts:walletUtils.localWallet("1000000000000000000000000",num=20),
+      chainId:100
+    },
+    xdai:{
+      url: `https://rpc.xdaichain.com/`,
+      accounts:walletUtils.makeKeyList()
     //gas : "auto",
     //gasPrice : "1000000000"
-  }}
+    }}
 };
 
 
