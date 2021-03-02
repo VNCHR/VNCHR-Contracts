@@ -47,6 +47,29 @@ describe("Meta Tx Enabled VNCHR", function() {
             
     });
 
+    describe("token details", function(){
+
+        it("Is called VNCHR", async function(){
+            expect(await vnchrMTx.name()).to.equal("VNCHR");
+        })
+
+        it("Has the symbol VNCHR", async function(){
+            expect(await vnchrMTx.symbol()).to.equal("VNCHR");
+        })
+
+        it("Has a cap of 5e24 wei", async function(){
+            expect((await vnchrMTx.cap()).toString()).to.equal("5000000000000000000000000");
+        })
+
+        it("cap works", async function(){
+            await expect(vnchrMTx.mint(
+                await accounts[1].getAddress(),
+                ethers.utils.parseEther("10000000")))
+                .to.be.revertedWith();
+        });
+
+    })
+
     describe("Permit", function(){
 
         it("Permit works with valid request",async function(){

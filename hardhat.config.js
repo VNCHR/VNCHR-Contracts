@@ -49,7 +49,12 @@ module.exports = {
       accounts:walletUtils.makeKeyList()
     //gas : "auto",
     //gasPrice : "1000000000"
-    }}
+    },
+    mumbai:{
+      url:"https://rpc-mumbai.matic.today",
+      accounts:walletUtils.makeKeyList()
+    }
+  }
 };
 
 

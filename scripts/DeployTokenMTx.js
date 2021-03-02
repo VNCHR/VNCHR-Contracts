@@ -1,13 +1,9 @@
 async function main(){
     const tokenFactory = await hre.ethers.getContractFactory("VNCHRTokenMetaTx");
-    const token = await contractFactory.deploy();
+    const token = await tokenFactory.deploy();
     await token.deployed();
     console.log("VNCHR Meta deployed at " + token.address);
-    await token.transferOwnership("0x6E83622c383E3346030d81424F3069dDCbf239F0");
-    const converterFactory = await hre.ethers.getContractFactory("TokenConverter");
-    const converter = await converterFactory.deploy("0xc2Ca6b686cf22F570E3a4a932AeD12F9F2fa382C",token.address);
-    await converter.deployed();
-    console.log("Converter deployed at " + token.address);
+    await token.transferOwnership("0xF48fa092dD3D5a86B1dd4d8d8f0146176C3A9160");
 }
 
 main()
